@@ -12,22 +12,31 @@ class LinkedList:
     def deletenode(self, position):
         if self.head is None:
             return
-        # si el elemento a borrar es el 0, movemos hacia atras los elementos de la lista
+        # si el elemento a borrar es el 0, movemos hacia atras
         if position == 0:
             self.head = self.head.siguiente
             return self.head
         
+        # guardamos el inicio de la lista
         index = 0
         current = self.head
         prev = self.head
         temp = self.head
         
+         # mientras haya elementos 
         while current is not None:
+             # si el elemento buscado es el actual 
             if index == position:
+                 # guardamos temporalmente el elemento siguiente , por ejemplo si quieremos borrar el 5, el temporal ahora es el 6
                 temp = current.siguiente
                 break
+            # si hemos encontrado en el loop el elemento 
+            # el anterior es el actual, por ejemplo el 5
             prev = current
+            
+            #y el actual es el el de cabecera  
             current = current.siguiente
+            
             index +=1
         prev.next = temp
         return prev
